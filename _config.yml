@@ -5,9 +5,14 @@ description: > # HTML Workshop for Aalto University's Economics Students
 baseurl: "/html-workshop" # the subpath of your site, e.g. /blog/
 url: "http://juzmach.github.io" # the base hostname & protocol for your site
 twitter_username: jstrmbrg
-github_username:  juzmach
+github_username:  Juzmach
 
 # Build settings
 markdown: kramdown
-
 highlighter: pygments
+
+kramdown:
+  input: GFM
+
+collections:
+- workshop-materials
