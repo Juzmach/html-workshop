@@ -75,9 +75,10 @@ Cloud9 is free to use for public projects. The free account gives you one privat
 
 For our purposes, the free account will do just fine. **If you're anxious about giving out private information online, use fake information in our exercises and/or use the private project.**
 
-
+<!---
 # HTML
 
 # Sources
 
 [University of Helsinki's Web Development Course 2015](http://web-selainohjelmointi.github.io)
+-->
