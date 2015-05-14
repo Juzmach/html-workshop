@@ -9,7 +9,7 @@ github_username:  Juzmach
 
 markdown: kramdown 
 encoding: UTF-8
-highlighter: rouge
+highlighter: pygments
 safe: true
 
 kramdown:
