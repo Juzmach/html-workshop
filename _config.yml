@@ -7,12 +7,10 @@ url: "http://juzmach.github.io" # the base hostname & protocol for your site
 twitter_username: jstrmbrg
 github_username:  Juzmach
 
-# Build settings
-markdown: kramdown
-highlighter: pygments
+markdown: kramdown 
+encoding: UTF-8
+highlighter: rouge
+safe: true
 
 kramdown:
   input: GFM
-
-collections:
-- workshop-materials
