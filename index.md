@@ -77,6 +77,8 @@ For our purposes, the free account will do just fine. **If you're anxious about 
 
 # HTML
 
+HTML stands for Hypertext Markup Language. It is the standard language used to create web pages. Above you can see a very basic HTML file. HTML uses tags enclosed in angle brackets (like `<html>`) called **HTML elements** to describe what is shown on the page. There are a lot of different HTML elements with their own purposes, and we'll go over most of them in this workshop. Among other things as well.
+
 ## What does HTML look like?
 
 {% highlight html %}
@@ -88,17 +90,37 @@ For our purposes, the free account will do just fine. **If you're anxious about 
     </head>
     <body>
         <h1>A header</h1>
-        <p>This is a paragraph, where you can write any kind of text.</p>
+        <p>This is a paragraph where you can write any kind of text.</p>
     </body>
 </html>
 {% endhighlight %}
 A basic HTML file saved in `index.html` file, for example.
 
-HTML stands for Hypertext Markup Language. It is the standard language used to create web pages. Above you can see a very basic HTML file. HTML uses tags enclosed in angle brackets (like `<html>`) called **HTML elements** to describe what is shown on the page. There are a lot of different HTML elements with their own purposes, and we'll go over most of them in this workshop. Among other things as well.
+When we open our example HTML document in a browser it looks like this:
+
+![Basic HTML example](assets/example-basic.png)
 
 The main thing you should notice about the elements is that they always come in pairs: `<html></html>` or `<body></body>`. It means that the element tag always has it's closing tag, identified by the forward slash `/` inside the angle brackets. Why? Well the main reason is that we can add stuff inside the element, like in our example above.
 
+However, some elements don't need a closing tag. Like that `<meta>` element, for example. The reason is that we don't have to (or actually we can't) put any content inside that element. These are called *self-closing elements*.
+
+Well what's that `charset="utf-8"` thing inside the `<meta>` tag then? That is an **attribute**. Attributes *extend* HTML elements, either by changing its appearance or providing metadata for it. The reason for attributes might be a bit confusing at the moment, but it'll become clear once we really start to use them. 
+
 ### The main elements of an HTML document
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>The Page title in the top bar of the browser</title>
+    </head>
+    <body>
+        <h1>A header</h1>
+        <p>This is a paragraph where you can write any kind of text.</p>
+    </body>
+</html>
+{% endhighlight %}
 
 Let's go over the elements we see in that example.
 
@@ -108,11 +130,19 @@ Now inside the `<html>` element we see two HTML elements with other elements ins
 
 Now on to the `<body>` element. Inside this element we write everything we want to show in our document. It is truly the body of our document. In our example we have a header `<h1>` and a paragraph `<p>`.
 
-When we open our example HTML document in a browser it looks like this:
+With the header element you can have headers with different sizes when you change the number on the element tag. For example:
 
-![Basic HTML example](assets/example-basic.png)
+![Header size example](assets/header-example.png)
 
 ### Summary
+
+A single `<html>` is called **an HTML tag**.
+
+An **HTML element** has *a starting tag* and *a closing tag*: `<html></html>`.
+
+Some HTML elements don't have a closing tag, they're called **self-closing elements**: `<meta />`. (The element closes itself with the `/>` in the end)
+
+An HTML element can have **attributes** that change the behaviour or appearance of the element: `<meta charset="utf-8" />` or `<h1 style="color: blue;">This header is blue</h1>`.
 
 Every HTML document starts with `<!DOCTYPE html>`.
 
@@ -120,7 +150,11 @@ Every element goes inside `<html></html>`.
 
 The `<head>` element is the mind of the document. It covers all the abstract information about it, stuff you don't see on the document. Except the `<title>`.
 
-The `<body>` element is the body of the document. Everything inside it is visible to the person viewing the document/site. 
+The `<body>` element is the body of the document. Everything inside it is visible to the person viewing the document/site.
+
+The `<h1>` element is a header and you can specify the size and hierarchy with the number in the element tag. The size range is 1-6.
+
+The `<p>` element is a paragraph element. Inside it you can write normal text.
 
 # Assignment: Personal portfolio site
 
@@ -136,7 +170,7 @@ Let's say that Jane Doe is a 24-year old recent graduate with a degree in Econom
 ![Jane Doe's portfolio](assets/portfolio_example/portfolio.png)
 The resulting site would look something like this.
 
-## Ex. 1 Setup the index.html
+## Ex. 1: Setup the index.html
 
 Create a new file called `index.html` and copy the snippet below inside it. Give the page a **title**.
 
@@ -160,13 +194,281 @@ The reason lies in how web servers (the computers where your site, meaning the H
 
 However, if the user wants to open up a different page on the site, say `about.html`, the address would be http://www.janedoe.com/about.html .
 
-## Ex. 2 Adding content
+## Ex. 2: Adding content
 
 Now we should have an index.html document with the main elements inside it. If we open that up in a browser (if using Notepad or the like just right-click the saved index.html document and select *Open with* -> *Google Chrome/Mozilla Firefox/etc.*, or if you're using Cloud9: Right-click and select *Preview* from the list).
 
 ![Blank index.html](assets/portfolio_example/blank_index.png)
 But there's nothing in here!
 
+We need to add some content here. Let's start by adding some projects and a short description of yourself. **Add a *Who am I?* section and at least one project into the site.** The result should look something like this:
+
+![Index page with content](assets/portfolio_example/index_with_projects.png)
+
+*Hint: Use header elements `<hX>` and paragraph element `<p>`. X being the size of the header.*
+
+
+# Structuring our HTML
+
+After you completed the second exercise of our assignment, your code probably looks something like this:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Jane Doe's Portfolio</title>
+    </head>
+    <body>
+        <h1>Jane Doe's Portfolio</h1>
+        <h2>Who am I?</h2>
+        <p>
+            I am a 24 year old Economics graduate from Helsinki. 
+            I'm interested in all things regarding entrepreneurship, startups, marketing and business development.
+        </p>
+        <h2>Projects I've worked on</h2>
+        <h3>Aalto Microfinance Project, Kampala, Uganda 2014</h3>
+        <p>I was part of a task force that was developing a microbanking system in Kampala, Uganda to help entrepreneurs get their businesses going.</p>
+        <h3>Startup Sauna Local Event in Helsinki, March 26th 2013</h3>
+        <p>I helped organize the Startup Sauna event in Helsinki where budding startups and entrepreneurs received direct feedback and coaching.</p>
+    </body>
+</html>
+{% endhighlight %}
+If you see this code before doing the second exercise, please do not copy-paste it or you won't learn anything.
+
+Now, this bit of code is not very structured. And when we move forward we're going to have problems once we want to start to do positioning etc.
+
+And in this context structuring means organizing the code in a smart and logical way, like grouping meaningful parts of the code together.
+
+## Structuring in HTML: The Old Way
+
+Before HTML5 came along there were structuring elements like `<div>` and `<span>`. Especially `<div>` element was heavily used in structuring HTML. You can use these elements like this:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Div test</title>
+    </head>
+    <body>
+        <div class="article">
+            <span id="article-header">
+                <h1>header inside div</h1>
+            </span>
+            <p>paragraph inside div</p>
+        </div>
+    </body>
+</html>
+{% endhighlight %}
+
+But when we look that in the browser, we don't see a difference:
+
+![Div example](assets/div-example.png)
+Why is that?
+
+The reason is that `<div>` and `<span>` elements are *containers* that don't inherently represent anything. Meaning that they are only used to group parts of the code together so that the code can be manipulated in groups. 
+
+The difference between `<div>` and `<span>` elements is that `<div>` is used for grouping multiple elements together, whereas the `<span>` element is used for *inline* grouping, like say grouping together one part of a text inside `<p>` element.
+
+These two elements are still available today, even with HTML5, but their usage and purpose has changed a little bit.
+
+## Structuring in HTML: The HTML5 Way
+
+HTML5 is the latest version of HTML. The new version has added lots of new elements into HTML, a total list of HTML elements you can find [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+
+HTML5 gives us new structuring elements that make our code more readable: `<section>`, `<article>`, `<header>`, `<footer>`, `<aside>` and others. Let's show them in action:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jane Doe's Portfolio</title>
+    </head>
+    <body>
+        <header>
+            <h1>Jane Doe's Portfolio</h1>
+        </header>
+        <aside>
+            <h1>Who am I?</h1>
+            <p>
+                I am a 24 year old Economics graduate from Helsinki. I'm interested in all things regarding entrepreneurship, startups, marketing and business development.
+            </p>
+        </aside>
+        <article>
+            <h2>Projects I've worked on</h2>
+            <section>
+               <h3>Aalto Microfinance Project, Kampala, Uganda 2014</h3>
+                <p>
+                    I was part of a task force that was developing a microbanking system in Kampala, Uganda to help entrepreneurs get their businesses going.
+                </p>
+            </section>
+            <section>
+                <h3>Startup Sauna Local Event in Helsinki, March 26th 2013</h3>
+                <p>
+                    I helped organize the Startup Sauna event in Helsinki where budding startups and entrepreneurs received direct feedback and coaching.
+                </p>
+            </section>
+        </article>
+        <footer>
+            <p>
+                Jane Doe's Portfolio, 2015.
+            </p>
+        </footer>
+        </body>
+</html>
+{% endhighlight %}
+
+Now our code has some structure. But let's look at what the changes look like in a browser:
+
+![Structured HTML in browser](assets/portfolio_example/structured_html.png)
+Huh? It still looks the same!
+
+Yes, the structuring elements themselves **do not change the appearance of the page**. Well, the headers work a bit differently now that they are inside grouping elements (Try changing the header size in one of the headers and preview the changes). But other than that, there are practically no changes in the appearance.
+
+So why do we structure our code like this? Well, the first reason is that we want our code to be more readable for us and anyone else who wants to edit it. One might argue that adding new elements into the document only makes it harder to read, but when you use these elements intelligently, the purpose the sections becomes clear immediately.
+
+With these new HTML5 elements, **you can specify a purpose for a section of the code**. Like in our example above: 
+
+We use the `<header>` element to define a header section for the whole document.
+
+We put the projects inside `<article>` element, because they are the real content of the document.
+
+We sectioned each project with the `<section>` element.
+
+Finally we sectioned the footer with `<footer>` element.
+
+The second reason for structuring becomes clear in the next chapter, but first let us structure our assignment code.
+
+# Assignment: Continuing with the portfolio
+
+## Ex. 3: Structure the index page
+
+Use the new HTML5 elements to structure the HTML code in the index.html document.
+
+# Introducing CSS
+
+You might have wondered why our assignment looks so bland when we preview is on a browser. It really looks nothing like the sites you see nowadays. Where are all the colors? Can't we at least change the font?
+
+![Bland bland bland..](assets/portfolio_example/structured_html.png)
+Ugh..
+
+## Let's make things pretty (or more *vibrant* at least)
+
+So here comes CSS. CSS stands for Cascading Style Sheet. And what that means that it is a set of instructions that tells the browser *how the site is going to look like*. CSS is formally called a style sheet language and it goes hand-in-hand with HTML when making web sites. Because, **where HTML is for the structure and the actual content of the site, CSS is for the look and the appearance of the site**.
+
+## CSS Syntax
+
+
+{% highlight CSS %}
+body {
+    background-color: #E4F1FE;
+    font-family: Arial;
+    color: #3A539B;
+    width: 70%;
+    margin:auto;
+}
+
+aside {
+    width: 20%;
+    float: right;
+}
+
+article {
+    width: 70%;
+}
+{% endhighlight %}
+Example CSS
+
+The things you see above are called **CSS rules** or **rule sets**. 
+
+{% highlight CSS %}
+body {
+    background-color: #E4F1FE;
+    font-family: Arial;
+    color: #3A539B;
+    width: 70%;
+    margin:auto;
+}
+{% endhighlight %}
+A single CSS rule.
+
+A CSS rule consists of a **selector** and a **declaration**. A selector points to the HTML element that we want to style (notice how the CSS has familiar words from the HTML we used before? That's right! *They're all linked*.). So in this case, `body` is the selector and it points to the `<body>` element in HTML.
+
+A declaration is a line inside the curly brackets (`{ }`). A declaration has a **property** and a **value**. In our example, we have a `background-color: #E4F1FE;` declaration that gives the `<body>` element (or the whole page, since it is the body element) a blueish background. `background-color` is property and `#E4F1FE` (color in hexadecimal format) is the value. 
+
+To summarize the syntax, here's a nice picture:
+
+![CSS Syntax](assets/css-syntax.png)
+
+**Note: The declarations must end with a semicolon (`;`)**.
+
+## Colors, fonts and sizes
+
+Let's go over some properties that we can use to change things.
+
+### Colors
+
+`background-color` is for changing the background color. [More about background-color](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color)
+
+`color` is for changing the text color. [More about color](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
+
+### Fonts
+
+`font-family` is for setting the font of the site. In it you can actually specify a list of fonts, or font families. The list is prioritized, so when user visits the site, his/her browser looks at the list and picks the first font to use in the site. If that font is not installed in the user's computer, then the browser picks the second font et cetera. [More about font-family](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)
+
+`font` 
+
+### Sizes
+
+`font-size` is for changing the font size. You can use units such as `px`(pixel), or scaling units such as `em` or `%` (percentile). [More about font-size and units](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)
+
+`width` is for changing the *width* of an element. You can use the same units as in `font-size`. [More about width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
+
+`height` is the same thing but for *height* of the element. [More about height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+
+#### One thing to remember about using *absolute* and *relative* units
+
+Pixel (`px`), even centimeter (`cm`) and inches (`in`), are absolute units available in CSS. Absolute means that when you use these units, the size of the element is *fixed*, meaning it won't change no matter what you do.
+
+`em`, `rem`, `%`, and point (`pt`) are all relative units, meaning their true size depends on different things. The reason for needing relative units is that they can scale more easily from one screen size to another.
+
+[Here](http://www.w3.org/TR/css3-values/#lengths) is the actual specification for these units.
+
+All this might sound pretty confusing (and it's okay), but you'll get the hang of it once you start trying out all of them.
+
+## Linking CSS with HTML
+
+CSS is usually saved into a `.css` file somewhere close to the HTML document we want to use it in. Sometimes just a single `style.css` (name doesn't really matter) is fine, but in larger web sites you might see all the CSS files put into a separate `css/`-folder.
+
+Well, say we have a `style.css` file saved in the same folder as our `index.html`, how do we use it? We need a `<link>` element.
+
+`<link>` Element specifies relationships between the document and external resources, like a `.css` file ([Source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)). To link our CSS into the HTML document, we need to put the `<link>` element inside our `<head>` element like this:
+
+{% highlight html %}
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>A HTML Document with a linked CSS file</title>
+</head>
+{% endhighlight %}
+A self-closing element with *three* attributes!
+
+The first attribute specifies the *relationship* of the external resource. In this case we specify it as a stylesheet, because it's CSS.
+
+The second attribute specifies the location of the resource. Note: If the file was in another folder, we would need to specify it like this: `href="FOLDER_NAME/style.css"`.
+
+# Assignment: Adding colors
+
+## Ex. 4: Add a background color to your page
+
+You can use [this](http://www.crockford.com/wrrrld/color.html) or [this](http://www.flatuicolorpicker.com) to find colors. When using the colors in the former link, you can just type the names into the value. The latter link has the colors in hexadecimal format that you can use like this: `#EF4836` or RGB format that you can use like this: `rgb(239,72,54)`.
+
+## Ex. 5: Add colors to your text and headers
+
+Use separate selectors for practice!
+
+## A good article about best practices in CSS
+
+[Over here](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Writing_efficient_CSS)
 
 <!--
 # Sources
