@@ -160,15 +160,7 @@ The `<p>` element is a paragraph element. Inside it you can write normal text.
 
 In this workshop we're going to practice our website building skills by creating a personal portfolio site. We're going to start by creating the HTML documents for the site and adding content into them and then adding more features step by step. I'm going to use an imaginary person on this site as an example, but you can obviously make the site for yourself or someone else. And of course **you don't have to follow the examples religiously. You are free (and encouraged) to add your own modifications.**
 
-Let's say that Jane Doe is a 24-year old recent graduate with a degree in Economics. During her studies she has worked in multiple projects with different companies and NGOs. Now she wants to build herself a portfolio site to show her experience. The site would include:
-
-* A resume page
-* A biography/about me page
-* A small gallery of images
-* A links page
-
-![Jane Doe's portfolio](assets/portfolio_example/portfolio.png)
-The resulting site would look something like this.
+The resulting site would look something like [this](/html-workshop/example/).
 
 ## Ex. 1: Setup the index.html
 
@@ -284,36 +276,58 @@ HTML5 gives us new structuring elements that make our code more readable: `<sect
     <head>
         <title>Jane Doe's Portfolio</title>
     </head>
+
     <body>
+
         <header>
             <h1>Jane Doe's Portfolio</h1>
         </header>
+
         <aside>
+
             <h1>Who am I?</h1>
+
             <p>
-                I am a 24 year old Economics graduate from Helsinki. I'm interested in all things regarding entrepreneurship, startups, marketing and business development.
+                I am a 24 year old Economics graduate from Helsinki.
+                I'm interested in all things regarding entrepreneurship, startups, marketing and business development.
             </p>
+
         </aside>
+
         <article>
+
             <h2>Projects I've worked on</h2>
+
             <section>
+
                <h3>Aalto Microfinance Project, Kampala, Uganda 2014</h3>
+
                 <p>
                     I was part of a task force that was developing a microbanking system in Kampala, Uganda to help entrepreneurs get their businesses going.
                 </p>
+
             </section>
+
             <section>
+
                 <h3>Startup Sauna Local Event in Helsinki, March 26th 2013</h3>
+
                 <p>
                     I helped organize the Startup Sauna event in Helsinki where budding startups and entrepreneurs received direct feedback and coaching.
                 </p>
+
             </section>
+
         </article>
+
         <footer>
+
             <p>
                 Jane Doe's Portfolio, 2015.
             </p>
+
         </footer>
+
         </body>
 </html>
 {% endhighlight %}
@@ -465,6 +479,144 @@ You can use [this](http://www.crockford.com/wrrrld/color.html) or [this](http://
 ## Ex. 5: Add colors to your text and headers
 
 Use separate selectors for practice!
+
+## Ex. 6: Change the font
+
+Change the font used in the site to whatever you like. Remember that not all fonts are *websafe*, meaning that not every font is found on the user's computer. And if a font is not found on the user's computer, it means that it will not show. That is why the `font-family` property is a prioritized list, so there is always something to fall back to.
+
+You can use [this](http://web.mit.edu/jmorzins/www/fonts.html) site to figure out a web-safe font for you to use. Or [this](http://www.cssfontstack.com) one.
+
+# Classes and IDs
+
+Now your page should have some color. Our example page, for example, looks like this:
+
+![Example](assets/portfolio_example/with_css_first.png)
+Nothing spectacular, but more colorful at least.
+
+Now you might have noticed that when you have multiple same elements in the HTML file and you change their appearance with the element selector, it changes the appearance of **all** the elements with the same tag.
+
+Say you have multiple `<section>` elements, and you applied this CSS rule:
+
+{% highlight css %}
+section {
+    background-color: lime;
+}
+{% endhighlight %}
+
+Now **every** `<section>` element would have a lime-colored background! How do we separate the elements?
+
+With classes and IDs.
+
+## Classes
+
+A class is an attribute you can give to an HTML element. It can be *classify* multiple elements. Say you had HTML code like this:
+
+{% highlight html %}
+<p>
+    I want this text to be blue
+</p>
+
+<p>
+    I want this text to be black
+</p>
+
+<p>
+    I want this text to be blue 
+</p>
+{% endhighlight %}
+
+And CSS like this:
+
+{% highlight css %}
+p {
+    color: blue;
+}
+{% endhighlight %}
+
+Can you figure out what that would do?
+
+...
+
+... It would turn all the text blue! Now, if we edited the code a little bit:
+
+HTML:
+{% highlight html %}
+<p class="blue-text">
+    I want this text to be blue
+</p>
+
+<p>
+    I want this text to be black
+</p>
+
+<p class="blue-text">
+    I want this text to be blue
+</p>
+{% endhighlight %}
+
+CSS:
+{% highlight css %}
+.blue-text { <-- Class selectors are marked with a dot.
+    color: blue;
+}
+{% endhighlight %}
+
+Now the texts would have the right colors.
+
+## IDs
+
+You can also use ID attributes to separate elements. The difference between a class and an ID is that with the ID attribute you can target *single* elements, whereas the class attribute is for targeting multiple elements.
+
+You can use IDs like this:
+
+HTML:
+{% highlight html %}
+<p>
+    I want this text to be blue
+</p>
+
+<p id="black-text">
+    I want this text to be black
+</p>
+
+<p>
+    I want this text to be blue
+</p>
+
+{% endhighlight %}
+
+CSS:
+{% highlight css %}
+#black-text { <-- ID selectors are marked with a hash.
+    color: black;
+}
+{% endhighlight %}
+
+Now we can start having some fun with CSS.
+
+# Positioning
+
+So far we've been doing pretty simple things with CSS. Now we are getting to the hard parts. CSS has always been the butt of many jokes because of its behaviors that might sometimes be a bit illogical.
+
+![CSS is awesome!](http://2.bp.blogspot.com/-UW3g76lTK-E/U0XIBligBII/AAAAAAAAAAU/4zkKDTEbhs8/s1600/css-is-awesome.gif)
+How you may or may not feel like after fiddling with CSS
+
+![CSS is awesome!](http://rlv.zcache.com/css_is_awesome_mug-r2d5815535b404a1ba0dd1e9a9142c950_x7jg9_8byvr_324.jpg)
+Like this mug?
+
+I don't mean to discourage you, on the contrary. Don't feel bad if you don't get the site looking the way you want at first. Just keep at it, and use google. **Seriously. Google is your friend when developing web sites or anything else.** There are tons of answers out there for almost any kind of problem regarding HTML and CSS. I use it all the time.
+
+## The Box Model
+
+Anyway, back to business.
+
+In HTML and CSS there is a thing called **the box model**. Basically in an HTML document, every element is represented as a rectangular box. And when you add CSS rules to your document, those rules make changes to the elements' boxes.
+
+
+
+# Borders
+
+# Back to HTML: Lists, Images and Links
 
 ## A good article about best practices in CSS
 
