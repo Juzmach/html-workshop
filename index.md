@@ -199,179 +199,132 @@ We need to add some content here. Let's start by adding some projects and a shor
 
 *Hint: Use header elements `<hX>` and paragraph element `<p>`. X being the size of the header.*
 
+# Continuing with HTML
 
-# Structuring our HTML
+Let's find out what other types of content we can put in our site. So far we've only used headings and paragraphs, and those are only just the surface!
 
-After you completed the second exercise of our assignment, your code probably looks something like this:
+## Lists
 
-{% highlight html %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Jane Doe's Portfolio</title>
-    </head>
-    <body>
-        <h1>Jane Doe's Portfolio</h1>
-        <h2>Who am I?</h2>
-        <p>
-            I am a 24 year old Economics graduate from Helsinki. 
-            I'm interested in all things regarding entrepreneurship, startups, marketing and business development.
-        </p>
-        <h2>Projects I've worked on</h2>
-        <h3>Aalto Microfinance Project, Kampala, Uganda 2014</h3>
-        <p>I was part of a task force that was developing a microbanking system in Kampala, Uganda to help entrepreneurs get their businesses going.</p>
-        <h3>Startup Sauna Local Event in Helsinki, March 26th 2013</h3>
-        <p>I helped organize the Startup Sauna event in Helsinki where budding startups and entrepreneurs received direct feedback and coaching.</p>
-    </body>
-</html>
-{% endhighlight %}
-If you see this code before doing the second exercise, please do not copy-paste it or you won't learn anything.
+HTML supports lists. We can do all kinds of lists, in fact. We can do **ordered lists** or **unordered lists**, for example.
 
-Now, this bit of code is not very structured. And when we move forward we're going to have problems once we want to start to do positioning etc.
-
-And in this context structuring means organizing the code in a smart and logical way, like grouping meaningful parts of the code together.
-
-## Structuring in HTML: The Old Way
-
-Before HTML5 came along there were structuring elements like `<div>` and `<span>`. Especially `<div>` element was heavily used in structuring HTML. You can use these elements like this:
-
-{% highlight html %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Div test</title>
-    </head>
-    <body>
-        <div class="article">
-            <span id="article-header">
-                <h1>header inside div</h1>
-            </span>
-            <p>paragraph inside div</p>
-        </div>
-    </body>
-</html>
+Unordered list:
+{% highlight html%}
+<ul>
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ul>
 {% endhighlight %}
 
-But when we look that in the browser, we don't see a difference:
-
-![Div example](assets/div-example.png)
-Why is that?
-
-The reason is that `<div>` and `<span>` elements are *containers* that don't inherently represent anything. Meaning that they are only used to group parts of the code together so that the code can be manipulated in groups. 
-
-The difference between `<div>` and `<span>` elements is that `<div>` is used for grouping multiple elements together, whereas the `<span>` element is used for *inline* grouping, like say grouping together one part of a text inside `<p>` element.
-
-These two elements are still available today, even with HTML5, but their usage and purpose has changed a little bit.
-
-## Structuring in HTML: The HTML5 Way
-
-HTML5 is the latest version of HTML. The new version has added lots of new elements into HTML, a total list of HTML elements you can find [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
-
-HTML5 gives us new structuring elements that make our code more readable: `<section>`, `<article>`, `<header>`, `<footer>`, `<aside>` and others. Let's show them in action:
-
-{% highlight html %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Jane Doe's Portfolio</title>
-    </head>
-
-    <body>
-
-        <header>
-            <h1>Jane Doe's Portfolio</h1>
-        </header>
-
-        <aside>
-
-            <h1>Who am I?</h1>
-
-            <p>
-                I am a 24 year old Economics graduate from Helsinki.
-                I'm interested in all things regarding entrepreneurship, startups, marketing and business development.
-            </p>
-
-        </aside>
-
-        <article>
-
-            <h2>Projects I've worked on</h2>
-
-            <section>
-
-               <h3>Aalto Microfinance Project, Kampala, Uganda 2014</h3>
-
-                <p>
-                    I was part of a task force that was developing a microbanking system in Kampala, Uganda to help entrepreneurs get their businesses going.
-                </p>
-
-            </section>
-
-            <section>
-
-                <h3>Startup Sauna Local Event in Helsinki, March 26th 2013</h3>
-
-                <p>
-                    I helped organize the Startup Sauna event in Helsinki where budding startups and entrepreneurs received direct feedback and coaching.
-                </p>
-
-            </section>
-
-        </article>
-
-        <footer>
-
-            <p>
-                Jane Doe's Portfolio, 2015.
-            </p>
-
-        </footer>
-
-        </body>
-</html>
+Ordered list:
+{% highlight html%}
+<ol>
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ol>
 {% endhighlight %}
 
-Now our code has some structure. But let's look at what the changes look like in a browser:
+It looks quite simple, and it is. You just have to specify the list with either a `<ol>`or `<ul>` element, and then add each list item with the `<li>` element.
 
-![Structured HTML in browser](assets/portfolio_example/structured_html.png)
-Huh? It still looks the same!
+## Links
 
-Yes, the structuring elements themselves **do not change the appearance of the page**. Well, the headers work a bit differently now that they are inside grouping elements (Try changing the header size in one of the headers and preview the changes). But other than that, there are practically no changes in the appearance.
+Links are important. Almost every web page has links. You can add links with the `<a>` element. 
 
-So why do we structure our code like this? Well, the first reason is that we want our code to be more readable for us and anyone else who wants to edit it. One might argue that adding new elements into the document only makes it harder to read, but when you use these elements intelligently, the purpose the sections becomes clear immediately.
+You can use it like this:
+{% highlight html %}
+<a>http://juzmach.github.io/html-workshop/example/</a>
+{% endhighlight %}
 
-With these new HTML5 elements, **you can specify a purpose for a section of the code**. Like in our example above: 
+And it shows up like this:
 
-We use the `<header>` element to define a header section for the whole document.
+<a>http://juzmach.github.io/html-workshop/example/</a>
 
-We put the projects inside `<article>` element, because they are the real content of the document.
+Or you can put the link address into the `href=""` attribute inside the element. Then you can create a link with custom text. Or another HTML element!
 
-We sectioned each project with the `<section>` element.
+You use it like this:
+{% highlight html %}
+<a href="http://juzmach.github.io/html-workshop/example/">Link to example site</a>
+{% endhighlight %}
 
-Finally we sectioned the footer with `<footer>` element.
+And it shows up like this:
 
-The second reason for structuring becomes clear in the next chapter, but first let us structure our assignment code.
+<a href="http://juzmach.github.io/html-workshop/example/">Link to example site</a>
 
-# Assignment: Continuing with the portfolio
+### Note on link addresses and the href attribute
 
-## Ex. 3: Structure the index page
+If you want to make a link for another page on the same site, you can set the `href=""` attribute like this:
 
-Use the new HTML5 elements to structure the HTML code in the index.html document.
+{% highlight html %}
+<a href="/html-workshop/example/">Link to another page on the same site</a>
+{% endhighlight %}
 
-# Introducing CSS
+So you can omit the *base address* of the site and just begin the address with a forward-slash. In the example above the site sends the user to `http://juzmach.github.io/html-workshop/example/`, where `juzmach.github.io` is the base address. If you made a link like this:
+
+{% highlight html %}
+<a href="/">Link</a>
+{% endhighlight %}
+
+It would send you to `http://juzmach.github.io/`. Or to the base address where your site is hosted on.
+
+## Images
+
+You can add images to the page with the `<img src="" alt="">` element. This element is special as it is a self-closing element (remember what those are? If not, here's the TL;DR: They close themselves with the `/>` thing in the end). But there's also another reason: **The `<img>` element needs two *attributes*, `src=""` and `alt=""` in order to work.**
+
+The `src=""` attribute is where you put the *source* of the image. Basically, if you have an image file `image.jpg` in the same directory as the HTML document, you specify the source like this: `src="image.jpg"`. If it's in another folder, say in a sub-directory that's in the same directory as the HTML document, you write it like this: `src="FOLDERNAME/image.jpg"`.
+
+The `alt=""` attribute tells us what the `<img>` is going to tell the user if the image source is not found.
+
+This is when the image is found:
+{% highlight html %}
+<!-- I have to use the width="" attribute as well to make the image smaller. 
+     This is a HTML comment, by the way :)
+     It does not show on the site. -->
+<img src="/html-workshop/resume/image.jpg" alt="Rufus" width="200">
+{% endhighlight %}
+
+<img src="/html-workshop/resume/image.jpg" alt="Rufus" width="200">
+
+This is when the image is not found:
+{% highlight html %}
+<img src="/html-workshop/resume/image.jpg" alt="Rufus">
+{% endhighlight %}
+
+<img src="image.jpg" alt="Rufus">
+
+Even better is if you add `title=""` attribute to the element. Then it shows a pop-up text when you hover over the image.
+
+{% highlight html %}
+<img src="image.jpg" alt="Rufus" title="Rufus">
+{% endhighlight %}
+
+<img src="image.jpg" alt="Rufus" title="Rufus">
+
+# Assigment: More content
+
+## Ex. 3: Add an image to the page
+
+Download an image somewhere from the net and add it to the page. Make sure to set the attributes correctly.
+
+*Hint: Download it to the same directory where the HTML document is to make it easier*
+
+## Ex. 4: Add a list of links to the page
+
+Add a list of links to the page. It can be either a navigational list of links 
+
+After these exercises, your site should look something like this:
+
+![Bland bland bland..](assets/portfolio_example/second.png)
 
 You might have wondered why our assignment looks so bland when we preview is on a browser. It really looks nothing like the sites you see nowadays. Where are all the colors? Can't we at least change the font?
 
-![Bland bland bland..](assets/portfolio_example/structured_html.png)
-Ugh..
+# Introducing CSS
 
 ## Let's make things pretty (or more *vibrant* at least)
 
 So here comes CSS. CSS stands for Cascading Style Sheet. And what that means that it is a set of instructions that tells the browser *how the site is going to look like*. CSS is formally called a style sheet language and it goes hand-in-hand with HTML when making web sites. Because, **where HTML is for the structure and the actual content of the site, CSS is for the look and the appearance of the site**.
 
 ## CSS Syntax
-
 
 {% highlight CSS %}
 body {
@@ -592,7 +545,216 @@ CSS:
 }
 {% endhighlight %}
 
-Now we can start having some fun with CSS.
+# Structuring our HTML
+
+After you completed the second exercise of our assignment, your code probably looks something like this:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Rufus the Corgi</title>
+        <link rel="stylesheet" href="third.css" type="text/css" />
+    </head>
+
+    <body>
+        
+        <h1>Rufus the Corgi</h1>
+        
+        <img src="/html-workshop/example/image.jpg" alt="rufus" width="100" id="profile-img"/>
+        <blockquote>
+            "A 7 year old pembroke welsh corgi by day, destroyer of shoes by night."
+        </blockquote>
+            
+        <ul>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/html-workshop/resume">Resume</a></li>
+        </ul>
+
+        <h1>Projects I've worked on</h1>
+        
+        <h3>Master's degree eating project, 2014</h3>
+        
+        <p>
+            I collaborated with the cat in an interdisciplinary ingestative project where the goal was to help the Master reduce his obligations.
+        </p>
+        
+        
+        <h3>Backyard deconstruction project, 2013</h3>
+        
+        <p>
+            My responsibilities was overseeing and managing the digging work. We broke ground in finding new ways to protect Master's shoes.
+        </p>
+        
+        <p>
+            Rufus the Corgi, 2015.
+        </p>
+    
+    </body>
+</html>
+{% endhighlight %}
+If you see this code before doing the second exercise, please do not copy-paste it or you won't learn anything.
+
+Now, this bit of code is not very structured. And when we move forward we're going to have problems once we want to start to do positioning etc.
+
+And in this context structuring means organizing the code in a smart and logical way, like grouping meaningful parts of the code together.
+
+## Structuring in HTML: The Old Way
+
+Before HTML5 came along there were structuring elements like `<div>` and `<span>`. Especially `<div>` element was heavily used in structuring HTML. You can use these elements like this:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Div test</title>
+    </head>
+    <body>
+        <div class="article">
+            <span id="article-header">
+                <h1>header inside div</h1>
+            </span>
+            <p>paragraph inside div</p>
+        </div>
+    </body>
+</html>
+{% endhighlight %}
+
+But when we look that in the browser, we don't see a difference:
+
+![Div example](assets/div-example.png)
+Why is that?
+
+The reason is that `<div>` and `<span>` elements are *containers* that don't inherently represent anything. Meaning that they are only used to group parts of the code together so that the code can be manipulated in groups. 
+
+The difference between `<div>` and `<span>` elements is that `<div>` is used for grouping multiple elements together, whereas the `<span>` element is used for *inline* grouping, like say grouping together one part of a text inside `<p>` element.
+
+These two elements are still available today, even with HTML5, but their usage and purpose has changed a little bit.
+
+## Structuring in HTML: The HTML5 Way
+
+HTML5 is the latest version of HTML. The new version has added lots of new elements into HTML, a total list of HTML elements you can find [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+
+HTML5 gives us new structuring elements that make our code more readable: `<section>`, `<article>`, `<header>`, `<footer>`, `<aside>` and others. Let's show them in action:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Rufus the Corgi</title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+
+    <body>
+    
+        <div class="top">
+            
+            <header>
+
+                <h1>Rufus the Corgi</h1>
+                
+                <img src="/html-workshop/example/image.jpg" alt="rufus" width="100" id="profile-img"/>
+            
+                <blockquote>
+                    "A 7 year old pembroke welsh corgi by day, destroyer of shoes by night."
+                </blockquote>
+            
+            </header>
+            
+            <nav>
+
+                <ul>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="/html-workshop/resume">Resume</a></li>
+                </ul>
+           
+            </nav>
+
+        </div> 
+
+        <div class="bottom">
+            
+            <div class="content">
+                
+                <article id="projects">
+        
+                     <h1>Projects I've worked on</h1>
+
+                    <section>
+        
+                       <h3>Master's degree eating project, 2014</h3>
+        
+                        <p>
+                            I collaborated with the cat in an interdisciplinary ingestative project where the goal was to help the Master reduce his obligations.
+                        </p>
+        
+                    </section>
+        
+                    <section>
+        
+                        <h3>Backyard deconstruction project, 2013</h3>
+        
+                        <p>
+                                My responsibilities was overseeing and managing the digging work. We broke ground in finding new ways to protect Master's shoes.
+                        </p>
+        
+                    </section>
+        
+                </article>
+                
+                <article id="contact">
+                    
+                </article>
+            
+            </div>
+    
+            <footer>
+    
+                <p>
+                    Rufus the Corgi, 2015.
+                </p>
+
+            </footer>
+            
+        </div>
+    </body>
+</html>
+{% endhighlight %}
+
+Now our code has some structure. But let's look at what the changes look like in a browser:
+
+![Structured HTML in browser](assets/portfolio_example/with_css_first.png)
+Huh? It still looks the same!
+
+Yes, the structuring elements themselves **do not change the appearance of the page**. Well, the headers work a bit differently now that they are inside grouping elements (Try changing the header size in one of the headers and preview the changes). But other than that, there are practically no changes in the appearance.
+
+So why do we structure our code like this? Well, the first reason is that we want our code to be more readable for us and anyone else who wants to edit it. One might argue that adding new elements into the document only makes it harder to read, but when you use these elements intelligently, the purpose the sections becomes clear immediately.
+
+With these new HTML5 elements, **you can specify a purpose for a section of the code**. Like in our example above: 
+
+We use the `<header>` element to define a header section for the whole document.
+
+We put the projects inside `<article>` element, because they are the real content of the document.
+
+We sectioned each project with the `<section>` element.
+
+Finally we sectioned the footer with `<footer>` element.
+
+The second reason for structuring is so you can use CSS to modify the appearance of only the elements you want.
+
+### The new HTML5 elements and div
+
+While HTML5 brought new structuring elements into play, we still see the `<div>` element used from time to time. And that is okay. One good rule of advice for using `<div>` instead of the newer elements is that if none of the HTML5 elements work for you in the situation, use `<div>`. So use it only when there are no other elements available.
+
+# Assignment: Continuing with the portfolio
+
+## Ex. 7: Structure the index page
+
+Think of what kind of layout you want for the page anduse the new HTML5 elements to structure the HTML code in the index.html document. 
 
 # Positioning
 
@@ -612,11 +774,7 @@ Anyway, back to business.
 
 In HTML and CSS there is a thing called **the box model**. Basically in an HTML document, every element is represented as a rectangular box. And when you add CSS rules to your document, those rules make changes to the elements' boxes.
 
-
-
 # Borders
-
-# Back to HTML: Lists, Images and Links
 
 ## A good article about best practices in CSS
 
