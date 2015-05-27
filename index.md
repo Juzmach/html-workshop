@@ -774,11 +774,244 @@ Anyway, back to business.
 
 In HTML and CSS there is a thing called **the box model**. Basically in an HTML document, every element is represented as a rectangular box. And when you add CSS rules to your document, those rules make changes to the elements' boxes.
 
-# Borders
+This information is crucial when we want to position the content in the document differently. Here's a good image that shows how how the box model works:
 
-## A good article about best practices in CSS
+![The box model](http://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
+*Source [washington.edu](http://www.washington.edu/accesscomputing/webd2/student/unit3/module4/lesson1.html)*
 
-[Over here](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Writing_efficient_CSS)
+So each element is a box, a *container*. That container has three layers that surround the content: **padding**, **border** and **margin**.
+
+You use them like this:
+
+{% highlight css %}
+
+body {
+    padding: 100px; /* sets the padding around the element to 100px */
+    margin: 2em; /* sets the margin around the element to 2em, twice the currently chosen font-size */
+    border: 1px solid black; /* notice the values: first the size, then the style and finally the color. */
+}
+
+/* 
+But you can also use them for separate sides like this:
+*/
+
+p {
+    padding-top: 20%; /* adds padding of 20% of the page's height to the top */
+    padding-bottom: 20%; /* same thing to the bottom */
+    padding-left: 0; /* adds padding of 0, basically removes padding, from the left side */
+    padding-right: 0; /* same thing to the right side */
+
+    margin-top: 2em; /* same syntax works for margin as well */
+    margin-bottom: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
+
+    margin: 2px 1em 0 auto; /* You can also type them like this. Here the values are: top | right | bottom | left */
+
+    padding: 2px 1em 0 auto; /* Same goes for padding. Again, values are: top | right | bottom | left */
+
+    /* the auto value sets the value automatically. */
+}
+
+{% endhighlight %}
+
+
+### Difference between margin and padding
+
+The inner-most area of the box model is the content area. That's where the actual content of the element lies. Also if the element has CSS properties, like background color or image, they are shown in that area.
+
+The next area is padding. **When the content area has a background, color or image set on it, this will extend into the padding.** Basically padding *extends* the content, usually this is seen as giving the content more room inside the element, but that extra room is just empty space, *with the same background and color*.
+
+Border is the next area. **Whenever you increase the size of the border, it grows outside the padding and content areas.** [Here](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style) is a good list of all the different style your border can have.
+
+Last area is the margin area. It is and empty area that is used to **separate the element from its neighbors.** The background, color and image in the element are not visible in that area.
+
+# Assignment: Fiddling with the box model
+
+## Ex. 8: Add padding to an element
+
+Add padding to at least one element of the site. Make sure to check how the site changes!
+
+## Ex. 9: Add margin to an element
+
+Add margin to at least one element of the site. Make sure to check how the site changes!
+
+## Ex. 10: Add a *solid* border to an element
+
+Add a solid border to an element. You can choose the color and size yourself. You can keep it small, but for an experiment try and give it a large size first. 
+
+# Continuing with positioning
+
+## Floats
+
+In an HTML document all the elements are in a so-called *flow*, usually represented in the same order they are written in HTML from top to bottom. Sometimes you want to have a certain element shown *outside* of that flow, say on the left side or the right side of the document. For example, when you have an image that you want to show next to an article.
+
+You can do that with **floats**:
+
+{% highlight css %}
+
+.float-left {
+     /* element with this class will float to the left */
+    float: left;
+}
+
+.float-right {
+    /* element with this class will float to the right */
+    float: right;
+}
+
+{% endhighlight %}
+
+### Float example
+
+Example HTML:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+        <title>Float example</title>
+        <link rel="stylesheet" href="float_example.css" type="text/css" />        
+    </head>
+    <body>
+        <img src="image.jpg" alt="" class="float-left" width="200"/>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    </body>
+</html>
+{% endhighlight %}
+
+Without any floating it looks like this:
+![Without floating](assets/without_floating_example.png)
+
+With left-side floating:
+![With left-side float](assets/left_side_float_example.png)
+
+With right-side floating:
+![With right-side float](assets/right_side_float_example.png)
+
+### Multiple floats
+
+Now if you have multiple floats in the same HTML document, you might see that they don't work as you expect them to work. The reason is that **when you float an element, it is removed from the normal flow of the document, and is floated to the border of the parent element it is in, or next to another floated element.**
+
+# Assignment: Add a float!
+
+## Ex. 11: Try your hand with floats
+
+Add at least one floating element to your page.
+
+# More info about CSS
+
+We've only scratched the surface of what we can do with CSS. Here are a few good articles to look through when using CSS to design pages and layouts.
+
+
+* [A good article about floats (designshack.net)](http://designshack.net/articles/css/everything-you-never-knew-about-css-floats/)
+* [A good article about best practices (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Writing_efficient_CSS)
+* [A developer's guide to CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS)
+
+
+# Introducing JavaScript
+
+JavaScript is the third main language of website development. Whereas HTML gives the page its structure and content, and CSS the look and layout, JavaScript adds *behaviour*. JavaScript is a true programming language and with it you can write actual programs, like a calculator.
+
+We're going to go over the very basic things about JavaScript. If you want to look into it more, I suggest reading [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide), or getting [this book](http://shop.oreilly.com/product/0636920039303.do?green=98A0F33C-8EFD-5C16-0747-CFD974A055F1&intcmp=af-mybuy-0636920039303.IP) (The e-book version is free!).
+
+## Variables
+
+Like any other programming language, JavaScript uses *variables* as symbolic names for values. Like in math, you can have a variable `x` represent a number. In programming, the idea is exactly the same, but you can store all kinds of things into variables.
+
+Variables in JavaScript are usually declared like this:
+{% highlight javascript %}
+var x = 42;
+console.log("The value of x is " + x); // this outputs a sentence "The value of x is 42" into JavaScript console on your browser.
+var myVariable = "A Variable's name can be anything.";
+console.log(myVariable); // This outputs a sentence "A Variable's name can be anything."
+{% endhighlight %}
+
+## Functions
+
+JavaScript has functions. They are the fundamental building blocks of JavaScript. A function is like an action that you can call the machine to do. 
+
+{% highlight javascript %}
+function calculate(x,y){ // variables x and y are given to the function as parameters
+    return x + y; // Adds x and y together and returns the result from the function
+};
+
+var x = 1;
+var y = 2;
+
+console.log(calculate(x,y)); // Outputs 3. (Sidenote: the console.log() is a function as well!)
+{% endhighlight %}
+
+## Control flow
+
+JavaScript has *conditional statements* that help you control the application's flow. They're basically checks that check if a condition is `true` or `false` and runs different lines of code depending on the condition.
+
+{% highlight javascript %}
+var condition = true; // this is true
+
+if (condition) { 
+    console.log("The sentence is shown if the condition is true"); // this sentence is outputted because the condition was true.
+} else {
+    console.log("The sentence is shown if the condition is false"); // this sentence is not outputted because the condition was true and not false.
+}
+
+if(1 > 2) { // this evaluates to false
+    console.log("This sentence is shown if the condition is true"); // Not shown because the condition is false.
+} else {
+    console.log("This sentence is shown if the condition is false"); // Shown because the condition is false.
+}
+{% endhighlight %}
+
+## Loops
+
+JavaScript has loop statements that iterate the same lines of code multiple times.
+
+{% highlight javascript %}
+
+var i = 0; // We set the initial value of i to 0. 
+
+while(i < 10) { // this loop runs as long as i is below 10
+    console.log("the value of i is " + i); // Shows the value of i at every loop.
+    i++; // This increments the value of i at every loop. It is needed to make sure that the loop ends at some point. Without it the loop statement loops itself forever, because i is always below 10.
+}
+
+for(var i = 0; i < 10; i++){
+    console.log("the value of i is " + i);
+}
+// The statement above is basically the same thing.
+
+{% endhighlight %}
+
+You can actually read these statements like this:
+
+*"while the variable `i` is below `10`, run the line `console.log("the value of i is " + i);`."*
+
+And:
+
+*"for `10` times run the line `console.log("the value of i is " + i);`."*
+
+## And that is programming in a (very very small) nutshell!
+
+There are still a lot of aspects to programming that are not covered here, like [data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections), [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types) and many, many more.
+
+# Using JavaScript with HTML
+
+So how do we add JavaScript to our HTML documents? With the `<script>` element:
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script src="code.js"></script>
+    </body>
+</html>
+{% endhighlight %}
+
+The `<script>` element loads the JavaScript code from the `code.js` file and runs it. *Note: It is generally a good practice to load all the JavaScript code **at the end of the `<body>` element**. The reason is that the browser can load up the HTML and CSS first and load the JS code last. That way the user can still see the page even if the JS is still loading (if it takes that long that is. Usually only a second or so. Longer is bad, obviously.).*
 
 <!--
 # Sources
