@@ -1013,9 +1013,7 @@ So how do we add JavaScript to our HTML documents? With the `<script>` element:
 
 The `<script>` element loads the JavaScript code from the `code.js` file and runs it. *Note: It is generally a good practice to load all the JavaScript code **at the end of the `<body>` element**. The reason is that the browser can load up the HTML and CSS first and load the JS code last. That way the user can still see the page even if the JS is still loading (if it takes that long that is. Usually only a second or so. Longer is bad, obviously.).*
 
-<!--
 # Sources
 
 [University of Helsinki's Web Development Course 2015](http://web-selainohjelmointi.github.io)
 [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML)
--->

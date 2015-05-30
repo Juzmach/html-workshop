@@ -164,3 +164,7 @@ footer {
 	-webkit-border-radius: 52px;
 	-moz-border-radius: 52px;
 }
+
+.hidden {
+    display: none;
+}
